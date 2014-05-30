@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J87-cQ-qzM">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Directions View Controller-->
+        <scene sceneID="zDu-sa-4Ek">
+            <objects>
+                <viewController storyboardIdentifier="directionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J87-cQ-qzM" customClass="CCDirectionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bIr-ph-t5I"/>
+                        <viewControllerLayoutGuide type="bottom" id="f9W-WL-dC8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="558-5G-9F8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQv-ep-Zsw" customClass="CCRoundButton">
+                                <rect key="frame" x="20" y="25" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="J87-cQ-qzM" eventType="touchUpInside" id="ezR-lF-kVn"/>
+                                </connections>
+                            </button>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzx-xR-6at">
+                                <rect key="frame" x="0.0" y="90" width="213" height="483"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tzx-Sh-2S8">
+                                    <size key="itemSize" width="193" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="directionStepCell" id="Skk-YB-qEa">
+                                        <rect key="frame" x="10" y="10" width="193" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="193" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="directionsCollectionView" destination="nzx-xR-6at" id="ycm-d7-wGC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gld-cT-RX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1173" y="973"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="PnV-wr-BW1">
+            <objects>
+                <viewController storyboardIdentifier="mapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ja3-R1-9Pn" customClass="CCMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Add-ka-ilH"/>
+                        <viewControllerLayoutGuide type="bottom" id="jsF-SA-Xzg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7c3-Jm-3B0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-93-vRc" customClass="CCRoundButton">
+                                <rect key="frame" x="90" y="496" width="50" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="ktf-FZ-ptd"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="menu">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreButtonPressed:" destination="ja3-R1-9Pn" eventType="touchUpInside" id="82s-MO-9re"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-yw-3dH" customClass="CCRoundButton">
+                                <rect key="frame" x="180" y="496" width="50" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="currentLocation">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rXa-93-vRc" secondAttribute="bottom" constant="20" symbolic="YES" id="16g-aC-bYe"/>
+                            <constraint firstItem="Ta6-yw-3dH" firstAttribute="leading" secondItem="rXa-93-vRc" secondAttribute="trailing" constant="40" id="5In-pG-B1s"/>
+                            <constraint firstAttribute="trailing" secondItem="Ta6-yw-3dH" secondAttribute="trailing" constant="90" id="G7A-jn-Xt3"/>
+                            <constraint firstItem="rXa-93-vRc" firstAttribute="top" secondItem="Ta6-yw-3dH" secondAttribute="top" id="M5R-RN-5A9"/>
+                            <constraint firstItem="Ta6-yw-3dH" firstAttribute="baseline" secondItem="rXa-93-vRc" secondAttribute="baseline" id="oy5-ZU-Xg8"/>
+                            <constraint firstItem="rXa-93-vRc" firstAttribute="leading" secondItem="7c3-Jm-3B0" secondAttribute="leading" constant="90" id="xGJ-vt-tgy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7HR-8W-Ohq"/>
+                    <connections>
+                        <outlet property="currentLocationButton" destination="Ta6-yw-3dH" id="nJg-92-7Th"/>
+                        <outlet property="moreButton" destination="rXa-93-vRc" id="xCC-7C-gQb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ijr-AL-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="973"/>
+        </scene>
+        <!--Drawing View Controller-->
+        <scene sceneID="tOr-hm-0Sc">
+            <objects>
+                <viewController storyboardIdentifier="routeDrawingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M7u-De-RBR" customClass="CCDrawingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JP5-56-GmL"/>
+                        <viewControllerLayoutGuide type="bottom" id="s9n-Xn-6Ma"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8gK-nW-x3h" customClass="CCDrawView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-Iw-Qd6" customClass="CCRoundButton">
+                                <rect key="frame" x="90" y="485" width="52" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToMapButtonPressed:" destination="M7u-De-RBR" eventType="touchUpInside" id="3fy-iF-yAg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-ka-Gnc" customClass="CCRoundButton">
+                                <rect key="frame" x="180" y="485" width="50" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="aoB-Sv-CWC"/>
+                                </constraints>
+                                <state key="normal" image="route">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="routeButtonPressed:" destination="M7u-De-RBR" eventType="touchUpInside" id="QfJ-nY-2B6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YH0-Iw-Qd6" firstAttribute="leading" secondItem="8gK-nW-x3h" secondAttribute="leading" constant="90" id="6GG-PC-Wn6"/>
+                            <constraint firstItem="JMB-ka-Gnc" firstAttribute="leading" secondItem="YH0-Iw-Qd6" secondAttribute="trailing" constant="38" id="PDI-Tw-zu7"/>
+                            <constraint firstItem="JMB-ka-Gnc" firstAttribute="top" secondItem="YH0-Iw-Qd6" secondAttribute="top" id="bmr-Lf-Lpi"/>
+                            <constraint firstAttribute="bottom" secondItem="JMB-ka-Gnc" secondAttribute="bottom" constant="20" symbolic="YES" id="seb-CZ-UAy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backToMapButton" destination="YH0-Iw-Qd6" id="drk-zc-DEu"/>
+                        <outlet property="routeButton" destination="JMB-ka-Gnc" id="g2D-oz-62e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RSj-q0-tVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2223" y="973"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="currentLocation" width="52" height="52"/>
+        <image name="done" width="52" height="52"/>
+        <image name="map" width="52" height="51"/>
+        <image name="menu" width="52" height="52"/>
+        <image name="route" width="54" height="63"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
