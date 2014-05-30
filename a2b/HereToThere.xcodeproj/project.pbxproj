@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D19B62219392CE900079A1F /* ios7_app_icon_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D19B61C19392CE900079A1F /* ios7_app_icon_iphone.png */; };
+		8D19B62319392CE900079A1F /* ios7_app_icon_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D19B61D19392CE900079A1F /* ios7_app_icon_iphone@2x.png */; };
+		8D19B62419392CE900079A1F /* ios7_settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D19B61E19392CE900079A1F /* ios7_settings_icon.png */; };
+		8D19B62519392CE900079A1F /* ios7_settings_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D19B61F19392CE900079A1F /* ios7_settings_icon@2x.png */; };
+		8D19B62619392CE900079A1F /* ios7_spotlight_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D19B62019392CE900079A1F /* ios7_spotlight_icon.png */; };
+		8D19B62719392CE900079A1F /* ios7_spotlight_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D19B62119392CE900079A1F /* ios7_spotlight_icon@2x.png */; };
+		8D19B62A19392DBF00079A1F /* CCDirectionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19B62919392DBF00079A1F /* CCDirectionsCell.m */; };
 		8D5DD0D8192591CA002A7E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0D7192591CA002A7E68 /* Foundation.framework */; };
 		8D5DD0DA192591CA002A7E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0D9192591CA002A7E68 /* CoreGraphics.framework */; };
 		8D5DD0DC192591CA002A7E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0DB192591CA002A7E68 /* UIKit.framework */; };
@@ -62,6 +69,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D19B61C19392CE900079A1F /* ios7_app_icon_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios7_app_icon_iphone.png; sourceTree = "<group>"; };
+		8D19B61D19392CE900079A1F /* ios7_app_icon_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_app_icon_iphone@2x.png"; sourceTree = "<group>"; };
+		8D19B61E19392CE900079A1F /* ios7_settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios7_settings_icon.png; sourceTree = "<group>"; };
+		8D19B61F19392CE900079A1F /* ios7_settings_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_settings_icon@2x.png"; sourceTree = "<group>"; };
+		8D19B62019392CE900079A1F /* ios7_spotlight_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios7_spotlight_icon.png; sourceTree = "<group>"; };
+		8D19B62119392CE900079A1F /* ios7_spotlight_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_spotlight_icon@2x.png"; sourceTree = "<group>"; };
+		8D19B62819392DBF00079A1F /* CCDirectionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDirectionsCell.h; sourceTree = "<group>"; };
+		8D19B62919392DBF00079A1F /* CCDirectionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDirectionsCell.m; sourceTree = "<group>"; };
 		8D5DD0D4192591CA002A7E68 /* HereToThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HereToThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD0D7192591CA002A7E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D5DD0D9192591CA002A7E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -226,6 +241,12 @@
 		8DBD9E99192E5FED0036B30A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8D19B61C19392CE900079A1F /* ios7_app_icon_iphone.png */,
+				8D19B61D19392CE900079A1F /* ios7_app_icon_iphone@2x.png */,
+				8D19B61E19392CE900079A1F /* ios7_settings_icon.png */,
+				8D19B61F19392CE900079A1F /* ios7_settings_icon@2x.png */,
+				8D19B62019392CE900079A1F /* ios7_spotlight_icon.png */,
+				8D19B62119392CE900079A1F /* ios7_spotlight_icon@2x.png */,
 				8DD464C01937F6B500609ED9 /* done.png */,
 				8DD464C11937F6B500609ED9 /* done@2x.png */,
 				8DD464B51937957200609ED9 /* map.png */,
@@ -279,6 +300,8 @@
 		8DBD9E9C192E60E60036B30A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8D19B62819392DBF00079A1F /* CCDirectionsCell.h */,
+				8D19B62919392DBF00079A1F /* CCDirectionsCell.m */,
 				8DEFC0021936A3A700A3F013 /* CCRoundButton.h */,
 				8DEFC0031936A3A700A3F013 /* CCRoundButton.m */,
 			);
@@ -371,21 +394,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D19B62519392CE900079A1F /* ios7_settings_icon@2x.png in Resources */,
+				8D19B62619392CE900079A1F /* ios7_spotlight_icon.png in Resources */,
 				8D76E9201936F020005EF8D3 /* settings.png in Resources */,
 				8DD464C21937F6B500609ED9 /* done.png in Resources */,
 				8D76E9211936F020005EF8D3 /* settings@2x.png in Resources */,
 				8D76E9111936E368005EF8D3 /* menu@2x.png in Resources */,
+				8D19B62319392CE900079A1F /* ios7_app_icon_iphone@2x.png in Resources */,
 				8DD464BB1937957200609ED9 /* route.png in Resources */,
 				8D5DD0F0192591CA002A7E68 /* Images.xcassets in Resources */,
 				8D76E9101936E368005EF8D3 /* menu.png in Resources */,
 				8DD464C31937F6B500609ED9 /* done@2x.png in Resources */,
 				8D76E9151936EA15005EF8D3 /* currentLocation@2x.png in Resources */,
 				8DD464BC1937957200609ED9 /* route@2x.png in Resources */,
+				8D19B62419392CE900079A1F /* ios7_settings_icon.png in Resources */,
 				8D76E9251936F02A005EF8D3 /* clear@2x.png in Resources */,
 				8D5DD0E2192591CA002A7E68 /* InfoPlist.strings in Resources */,
 				8DD464B91937957200609ED9 /* map.png in Resources */,
 				8D76E91D1936F004005EF8D3 /* forward@2x.png in Resources */,
+				8D19B62719392CE900079A1F /* ios7_spotlight_icon@2x.png in Resources */,
 				8D76E9191936EE62005EF8D3 /* directions@2x.png in Resources */,
+				8D19B62219392CE900079A1F /* ios7_app_icon_iphone.png in Resources */,
 				8D76E9241936F02A005EF8D3 /* clear.png in Resources */,
 				8D76E9181936EE62005EF8D3 /* directions.png in Resources */,
 				8D76E9141936EA15005EF8D3 /* currentLocation.png in Resources */,
@@ -417,6 +446,7 @@
 				8DEFBFF81936A26E00A3F013 /* CCMapViewController.m in Sources */,
 				8DEFBFFE1936A2E200A3F013 /* CCDirectionsViewController.m in Sources */,
 				8DEFBFFB1936A27E00A3F013 /* CCDrawingViewController.m in Sources */,
+				8D19B62A19392DBF00079A1F /* CCDirectionsCell.m in Sources */,
 				8D5DD0E8192591CA002A7E68 /* CCAppDelegate.m in Sources */,
 				8DEFC0071936A3D500A3F013 /* CCMenuView.m in Sources */,
 				8D5DD0E4192591CA002A7E68 /* main.m in Sources */,

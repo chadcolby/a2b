@@ -7,6 +7,7 @@
 //
 
 #import "CCDirectionsViewController.h"
+#import "CCDirectionsCell.h"
 #import <MapKit/MapKit.h>
 
 @interface CCDirectionsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -56,7 +57,7 @@
 {
     self.directionsCollectionView.delegate = self;
     self.directionsCollectionView.backgroundColor = [UIColor clearColor];
-    
+
 }
 
 - (void)routeStepsFromRouteController:(NSNotification *)notification
@@ -92,10 +93,14 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"directionStepCell" forIndexPath:indexPath];
+    CCDirectionsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"directionStepCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     cell.layer.borderColor = [[UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.0f] CGColor];
     cell.layer.borderWidth = 2.0;
+    NSNumber *distanceHolderNumber = [[self.formattedDirectionsArray objectAtIndex:indexPath.item]
+                                      objectForKey:@"stepDistance"];
+    distanceHolderNumber = [NSNumber numberWithDouble: ([distanceHolderNumber doubleValue] * 3.28084)];
+    cell.distanceLabel.text = [distanceHolderNumber stringValue];
     
     return cell;
 }
