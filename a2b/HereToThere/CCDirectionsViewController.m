@@ -99,9 +99,46 @@
     cell.layer.borderWidth = 2.0;
     NSNumber *distanceHolderNumber = [[self.formattedDirectionsArray objectAtIndex:indexPath.item]
                                       objectForKey:@"stepDistance"];
-    distanceHolderNumber = [NSNumber numberWithDouble: ([distanceHolderNumber doubleValue] * 3.28084)];
-    cell.distanceLabel.text = [distanceHolderNumber stringValue];
+    cell.distanceLabel.text = [[self convertDistance:distanceHolderNumber] objectAtIndex:0];
+    cell.unitsLabel.text = [[self convertDistance:distanceHolderNumber] objectAtIndex:1];
     
     return cell;
+}
+
+- (NSArray *)convertDistance:(NSNumber *)metersToConvert
+{
+    NSString *convertedString;
+    NSString *unitsString;
+    
+    if ([metersToConvert doubleValue] <= 201.17) {
+        CGFloat feetFloat = ([metersToConvert floatValue] * 3.28084);
+        convertedString = [NSString stringWithFormat:@"%.0f", feetFloat];
+        unitsString = @"feet";
+    } else if ([metersToConvert doubleValue] <= 402.33) {
+        convertedString = @"1/4";   //quarter mile
+        unitsString = @"mile";
+    } else if ([metersToConvert doubleValue] <= 531.09) {
+        convertedString = @"1/3";
+        unitsString = @"mile";
+    } else if ([metersToConvert doubleValue] <= 804.67) {
+        convertedString = @"1/2";
+        unitsString = @"mile";
+    } else if ([metersToConvert doubleValue] <= 1062.62) {
+        convertedString = @"2/3";
+        unitsString = @"mile";
+    } else if ([metersToConvert doubleValue] <= 1207.01) {
+        convertedString = @"3/4";
+        unitsString = @"mile";
+    }  else if ([metersToConvert doubleValue] <= 1408.18) {
+        convertedString = @"7/8";
+        unitsString = @"mile";
+    } else {
+        CGFloat mileHolder = ([metersToConvert floatValue] * 0.000621371);
+        convertedString = [NSString stringWithFormat:@"%.2f", mileHolder];
+        unitsString = @"miles";
+    }
+    
+    NSArray *convertedDistanceAndUnitsArray = [NSArray arrayWithObjects:convertedString, unitsString, nil];
+    return convertedDistanceAndUnitsArray;
 }
 @end
