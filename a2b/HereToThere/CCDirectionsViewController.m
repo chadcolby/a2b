@@ -178,7 +178,14 @@
 {
     NSLog(@"detecting");
     if (sender.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"swiping");
+
+    }
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"<<<<<<<<");
+    }
+    
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"ended");
     }
 }
 
@@ -207,6 +214,11 @@
 - (void)animateSelectedCell:(CCDirectionsCell *)selectedCell;
 {
     [selectedCell addArrowViewForDeleteLongPress]; //animates the addition of the arrow view to indicate selection
+}
+
+- (void)removeCellAtIndex
+{
+    
 }
 
 #pragma mark - collection view delegate methods
