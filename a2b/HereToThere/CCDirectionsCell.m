@@ -33,6 +33,8 @@
         self.unitsLabel.textColor = colorForText;
         self.distanceLabel.textColor = colorForText;
         self.instructionsLabel.textColor = colorForText;
+        
+        
 
     }
     return self;

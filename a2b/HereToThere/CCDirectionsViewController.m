@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSArray *stepsArray;
 @property (strong, nonatomic) NSMutableArray *formattedDirectionsArray;
 
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeToDeleteRecognizer;
+
 - (IBAction)doneButtonPressed:(id)sender;
 
 @end
@@ -57,6 +59,9 @@
     self.directionsCollectionView.delegate = self;
     self.directionsCollectionView.backgroundColor = [UIColor clearColor];
     
+    self.swipeToDeleteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetected:)];
+    self.swipeToDeleteRecognizer.numberOfTouchesRequired = 1;
+    self.swipeToDeleteRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
 
 }
 
@@ -145,6 +150,14 @@
     
     NSArray *convertedDistanceAndUnitsArray = [NSArray arrayWithObjects:convertedString, unitsString, nil];
     return convertedDistanceAndUnitsArray;
+}
+
+- (void)swipeDetected:(UISwipeGestureRecognizer *)sender
+{
+    NSLog(@"detecting");
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"swiping");
+    }
 }
 
 @end

@@ -117,6 +117,7 @@
 {
     [self.drawableViewController removeFromParentViewController];
     [self.drawableViewController.view removeFromSuperview];
+    self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
 }
 
 - (void)animateButtonFadeIn
@@ -149,11 +150,13 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         self.moreButton.alpha = 0.0f;
         self.currentLocationButton.alpha = 0.0f;
+        [self.menuView removeGestureRecognizer:self.longPressToDraw];
 
         if (!self.drawableViewController) {
             self.drawableViewController = [self createDrawableViewFromStoryboard];
         } else
         {
+            NSLog(@"removing");
             [self.mapView removeOverlays:self.mapView.overlays];
             self.menuView.clearButton.enabled = NO;
             self.menuView.directionsButton.enabled = NO;
@@ -280,6 +283,18 @@
                                          self.view.bounds.size.width, 100);
     }];
     
+}
+
+#pragma mark - UIGestureRecognizer delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([[touch view] isEqual:self.drawableViewController]) {
+        NSLog(@"ignore long press");
+        
+        return NO;
+    }
+    return YES;
 }
 
 @end
