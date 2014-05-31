@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCDirectionsCell : UICollectionViewCell
+@interface CCDirectionsCell : UICollectionViewCell 
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 

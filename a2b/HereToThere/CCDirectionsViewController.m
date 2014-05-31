@@ -56,6 +56,7 @@
 {
     self.directionsCollectionView.delegate = self;
     self.directionsCollectionView.backgroundColor = [UIColor clearColor];
+    
 
 }
 
@@ -64,6 +65,7 @@
     if ([notification.name isEqualToString:@"routeStepsToDisplay"]) {
         self.stepsArray = [[NSArray alloc] initWithObjects: [notification.userInfo objectForKey:@"routeInfo"], nil];
         [self processDirectionSteps:self.stepsArray[0]];
+        [self.directionsCollectionView reloadData];
     }
 
     
@@ -94,13 +96,14 @@
 {
     CCDirectionsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"directionStepCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-//    cell.layer.borderColor = [[UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.0f] CGColor];
-//    cell.layer.borderWidth = 2.0;
+
     NSNumber *distanceHolderNumber = [[self.formattedDirectionsArray objectAtIndex:indexPath.item]
                                       objectForKey:@"stepDistance"];
     cell.distanceLabel.text = [[self convertDistance:distanceHolderNumber] objectAtIndex:0];
     cell.unitsLabel.text = [[self convertDistance:distanceHolderNumber] objectAtIndex:1];
-    
+    cell.instructionsLabel.text = [[self.formattedDirectionsArray objectAtIndex:indexPath.row]
+                                   objectForKey:@"stepInstructions"];
+
     return cell;
 }
 
@@ -109,7 +112,10 @@
     NSString *convertedString;
     NSString *unitsString;
     
-    if ([metersToConvert doubleValue] <= 201.17) {
+    if ([metersToConvert doubleValue] == 0.0) {
+        convertedString = @"start";
+        unitsString = @"route";
+    } else if ([metersToConvert doubleValue] <= 201.17) {
         CGFloat feetFloat = ([metersToConvert floatValue] * 3.28084);
         convertedString = [NSString stringWithFormat:@"%.0f", feetFloat];
         unitsString = @"feet";
@@ -140,4 +146,5 @@
     NSArray *convertedDistanceAndUnitsArray = [NSArray arrayWithObjects:convertedString, unitsString, nil];
     return convertedDistanceAndUnitsArray;
 }
+
 @end

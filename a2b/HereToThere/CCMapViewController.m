@@ -155,6 +155,8 @@
         } else
         {
             [self.mapView removeOverlays:self.mapView.overlays];
+            self.menuView.clearButton.enabled = NO;
+            self.menuView.directionsButton.enabled = NO;
             [self addChildViewController:self.drawableViewController];
             [self.view addSubview:self.drawableViewController.view];
             [self.drawableViewController didMoveToParentViewController:self];
@@ -186,13 +188,13 @@
     }];
 }
 
-- (void)routeLineReturned:(CCRoundButton *)sender
+- (void)routeLineReturned:(CCRoundButton *)sender //clear map overlays
 {
     if (self.mapView.overlays.count > 0) {
         [self.mapView removeOverlays:self.mapView.overlays];
-        self.menuView.clearButton.enabled = NO;
-        self.menuView.directionsButton.enabled = NO;
     }
+    self.menuView.clearButton.enabled = NO;
+    self.menuView.directionsButton.enabled = NO;
 }
 
 #pragma mark - drawable view methods
@@ -245,6 +247,7 @@
     if ([notification.name isEqualToString:@"routeLineReturned"]) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"routeLineReturned" object:nil];
         self.routeToAdd = [notification.userInfo objectForKey:@"routeInfo"];
+        
         [self.mapView addOverlay:self.routeToAdd.polyline];
         if (self.routingIndicator.isAnimating) {
             [self.routingIndicator stopAnimating];
