@@ -31,6 +31,7 @@
 @property (strong, nonatomic) UIActivityIndicatorView *routingIndicator;
 
 - (IBAction)moreButtonPressed:(CCRoundButton *)sender;
+- (IBAction)currentLocationButtonPressed:(id)sender;
 
 @end 
 
@@ -69,12 +70,14 @@
     [self.view bringSubviewToFront:self.moreButton];
     [self.view bringSubviewToFront:self.currentLocationButton];
     
-    self.menuView = [[CCMenuView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.
-                                                                 bounds.size.width, 100)];
+    self.menuView = [[CCMenuView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height,
+                                                                 self.view.bounds.size.width, 100)];
     [self.menuView.directionsButton addTarget:self action:@selector(showDirections:) forControlEvents:UIControlEventTouchUpInside];
     [self.menuView.clearButton addTarget:self action:@selector(routeLineReturned:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuView];
+    
     self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
+    
     self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
     self.longPressToDraw.delegate = self;
     self.longPressToDraw.minimumPressDuration = 0.8f;
@@ -174,6 +177,11 @@
     [self showMenuViewAnimated:YES];
 }
 
+- (IBAction)currentLocationButtonPressed:(id)sender
+{
+    [self.mapView setCenterCoordinate:self.locationManager.location.coordinate animated:YES];
+}
+
 #pragma mark - Menu button methods
 
 - (void)showDirections:(CCRoundButton *)sender
@@ -188,6 +196,7 @@
     } completion:^(BOOL finished) {
         self.closeMenuTap.enabled = NO;
         [self updateViewConstraints];
+        
     }];
 }
 

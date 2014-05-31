@@ -11,7 +11,6 @@
 
 @interface CCDirectionsCell ()
 
-
 @end
 
 @implementation CCDirectionsCell
@@ -34,7 +33,13 @@
         self.distanceLabel.textColor = colorForText;
         self.instructionsLabel.textColor = colorForText;
         
-        
+        self.arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2 - 50, self.bounds.size.
+                                                                            height / 2 - 20,100, 41)];
+        self.arrowImageView.image = [UIImage imageNamed:@"deleteArrow"];
+        self.arrowImageView.alpha = 0.0f;
+        [self bringSubviewToFront:self.arrowImageView];
+        [self addSubview:self.arrowImageView];
+
 
     }
     return self;
@@ -67,6 +72,26 @@
     
 }
 
-
+- (void)addArrowViewForDeleteLongPress
+{
+    if (self.arrowImageView.alpha == 0.0) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.arrowImageView.alpha = 0.45f;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+}
+- (void)dismissDeleteArrow
+{
+    NSLog(@"dismiss");
+  //  if (self.arrowImageView.alpha != 0.0f) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.arrowImageView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+           
+        }];
+    //}
+}
 
 @end

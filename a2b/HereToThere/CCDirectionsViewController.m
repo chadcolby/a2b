@@ -10,13 +10,15 @@
 #import "CCDirectionsCell.h"
 #import <MapKit/MapKit.h>
 
-@interface CCDirectionsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CCDirectionsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *directionsCollectionView;
 @property (strong, nonatomic) NSArray *stepsArray;
 @property (strong, nonatomic) NSMutableArray *formattedDirectionsArray;
 
 @property (strong, nonatomic) UISwipeGestureRecognizer *swipeToDeleteRecognizer;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressToSelect;
+@property (strong, nonatomic) UITapGestureRecognizer *tapToDismissDelete;
 
 - (IBAction)doneButtonPressed:(id)sender;
 
@@ -49,9 +51,10 @@
     [self.mapViewVC didMoveToParentViewController:self];
 }
 
-- (IBAction)doneButtonPressed:(id)sender
+- (IBAction)doneButtonPressed:(id)sender //forces mapView to re-size itself and become active
 {
     [self.mapViewVC performSelectorOnMainThread:@selector(closeDirectionsView:) withObject:nil waitUntilDone:NO];
+    [self.directionsCollectionView scrollToItemAtIndexPath:nil atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
 }
 
 - (void)directionsCollectionViewSetUp
@@ -62,6 +65,19 @@
     self.swipeToDeleteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetected:)];
     self.swipeToDeleteRecognizer.numberOfTouchesRequired = 1;
     self.swipeToDeleteRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    self.swipeToDeleteRecognizer.delegate = self;
+    [self.directionsCollectionView addGestureRecognizer:self.swipeToDeleteRecognizer];
+    
+    self.longPressToSelect = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
+    self.longPressToSelect.numberOfTouchesRequired = 1;
+    self.longPressToSelect.allowableMovement = 10.0f;
+    self.longPressToSelect.minimumPressDuration = 0.5f;
+    [self.directionsCollectionView addGestureRecognizer:self.longPressToSelect];
+    
+    self.tapToDismissDelete = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToDismissArrow:)];
+    self.tapToDismissDelete.numberOfTapsRequired = 2;
+    self.tapToDismissDelete.numberOfTouchesRequired = 1;
+    [self.directionsCollectionView addGestureRecognizer:self.tapToDismissDelete];
 
 }
 
@@ -101,6 +117,10 @@
 {
     CCDirectionsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"directionStepCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    
+    if (cell.arrowImageView.alpha != 0.0) {
+        [cell dismissDeleteArrow];
+    }
 
     NSNumber *distanceHolderNumber = [[self.formattedDirectionsArray objectAtIndex:indexPath.item]
                                       objectForKey:@"stepDistance"];
@@ -152,12 +172,48 @@
     return convertedDistanceAndUnitsArray;
 }
 
+#pragma mark - gesture recognizers
+
 - (void)swipeDetected:(UISwipeGestureRecognizer *)sender
 {
     NSLog(@"detecting");
     if (sender.state == UIGestureRecognizerStateBegan) {
         NSLog(@"swiping");
     }
+}
+
+- (void)longPressDetected:(UILongPressGestureRecognizer *)sender
+{
+    NSInteger pressedRow;
+    NSIndexPath *pressedIndexpath = [self.directionsCollectionView indexPathForItemAtPoint:[sender locationInView:self.directionsCollectionView]];
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        pressedRow = pressedIndexpath.item;
+        NSLog(@"we gots the long press at %ld", (long)pressedRow);
+        [self animateSelectedCell:(CCDirectionsCell *)[self.directionsCollectionView cellForItemAtIndexPath:pressedIndexpath]];
+    }
+    
+}
+
+- (void)tapToDismissArrow:(UITapGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        CCDirectionsCell *activeCell = (CCDirectionsCell *)[self.directionsCollectionView cellForItemAtIndexPath:[self.directionsCollectionView indexPathForItemAtPoint:[sender locationInView:self.directionsCollectionView]]];
+        if (activeCell.arrowImageView.alpha != 0.0) {
+            [activeCell dismissDeleteArrow];
+        }
+    }
+}
+
+- (void)animateSelectedCell:(CCDirectionsCell *)selectedCell;
+{
+    [selectedCell addArrowViewForDeleteLongPress]; //animates the addition of the arrow view to indicate selection
+}
+
+#pragma mark - collection view delegate methods
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
 }
 
 @end
