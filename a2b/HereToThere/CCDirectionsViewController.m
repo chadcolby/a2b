@@ -26,8 +26,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(routeStepsFromRouteController:) name:@"routeStepsToDisplay"
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(routeStepsFromRouteController:) name:@"routeStepsToDisplay" object:nil];
     [self mapViewSetUp];
     [self directionsCollectionViewSetUp];
 }
@@ -95,8 +94,8 @@
 {
     CCDirectionsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"directionStepCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-    cell.layer.borderColor = [[UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.0f] CGColor];
-    cell.layer.borderWidth = 2.0;
+//    cell.layer.borderColor = [[UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.0f] CGColor];
+//    cell.layer.borderWidth = 2.0;
     NSNumber *distanceHolderNumber = [[self.formattedDirectionsArray objectAtIndex:indexPath.item]
                                       objectForKey:@"stepDistance"];
     cell.distanceLabel.text = [[self convertDistance:distanceHolderNumber] objectAtIndex:0];

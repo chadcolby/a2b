@@ -175,11 +175,11 @@
 {
     [UIView animateWithDuration:0.4 animations:^{
         self.view.frame = CGRectMake(self.view.bounds.size.width - 107, self.view.bounds.origin.y + 100, 107, 368);
-        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 64.7f, self.view.bounds.size.width,
-                                         64.7f);
+        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 64.7f, self.view.bounds.size.width, 64.7f);
         self.menuView.alpha = 0.0f;
-        self.mapView.layer.borderColor = [[UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.0f] CGColor];
-        self.mapView.layer.borderWidth = 2.0;
+        self.view.layer.shadowOffset = CGSizeMake(-8, 16);
+        self.view.layer.shadowRadius = 5.0f;
+        self.view.layer.shadowOpacity = 0.50f;
     } completion:^(BOOL finished) {
         self.closeMenuTap.enabled = NO;
         [self updateViewConstraints];
@@ -273,7 +273,8 @@
     } completion:^(BOOL finished) {
         self.closeMenuTap.enabled = YES;
         self.menuView.alpha = 1.0;
-        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.bounds.size.width, 100);
+        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height,
+                                         self.view.bounds.size.width, 100);
     }];
     
 }
