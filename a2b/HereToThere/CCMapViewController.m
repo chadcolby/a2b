@@ -31,7 +31,7 @@
 @property (strong, nonatomic) UIActivityIndicatorView *routingIndicator;
 
 - (IBAction)moreButtonPressed:(CCRoundButton *)sender;
-- (IBAction)currentLocationButtonPressed:(id)sender;
+- (IBAction)currentLocationButtonPressed:(CCRoundButton *)sender;
 
 @end 
 
@@ -120,7 +120,6 @@
 {
     [self.drawableViewController removeFromParentViewController];
     [self.drawableViewController.view removeFromSuperview];
-    self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
 }
 
 - (void)animateButtonFadeIn
@@ -159,7 +158,6 @@
             self.drawableViewController = [self createDrawableViewFromStoryboard];
         } else
         {
-            NSLog(@"removing");
             [self.mapView removeOverlays:self.mapView.overlays];
             self.menuView.clearButton.enabled = NO;
             self.menuView.directionsButton.enabled = NO;
@@ -177,7 +175,7 @@
     [self showMenuViewAnimated:YES];
 }
 
-- (IBAction)currentLocationButtonPressed:(id)sender
+- (IBAction)currentLocationButtonPressed:(CCRoundButton *)sender
 {
     [self.mapView setCenterCoordinate:self.locationManager.location.coordinate animated:YES];
 }

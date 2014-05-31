@@ -103,7 +103,6 @@
         self.backToMapButton.alpha = 1.0f;
         self.routeButton.alpha = 1.0f;
     } completion:^(BOOL finished) {
-        NSLog(@"ease in");
     }];
 }
 
