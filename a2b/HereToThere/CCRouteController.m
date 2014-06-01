@@ -68,9 +68,7 @@
     if (route) {
         NSDictionary *stepsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:route.steps, @"routeInfo", nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"routeStepsToDisplay" object:self userInfo:stepsDictionary];
-//        for (MKRouteStep *step in route.steps) {
-//            NSLog(@"In %f meters %@", step.distance, step.instructions);
-//        }
+
     }
 }
 
